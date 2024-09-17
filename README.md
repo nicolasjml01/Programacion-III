@@ -39,7 +39,7 @@ El repositorio está organizado de manera semanal. Cada carpeta representa una s
 > **🔄** En progreso  
 > **✅** Completado  
 
-### ✨ Contacto y Contribuciones
+### ✨ Contacto
 
 Si quieres ponerte en contacto conmigo:
 
