@@ -18,6 +18,9 @@ El repositorio está organizado de manera semanal. Cada carpeta representa una s
 
 - **[Proyecto 4: Mayor de tres números](https://github.com/nicolasjml01/Programacion-III/tree/d94b1060fa45a68504ebf650991bfa99f55ee378/Semana%201/Numero_Mayor)**  
 
+### Semana 2: 🚀 **JAR y Scanner**
+
+
 
 > **Nota**: Los proyectos se irán añadiendo a medida que avance en el curso. ¡Cada semana trae nuevos retos!
 
@@ -32,7 +35,8 @@ El repositorio está organizado de manera semanal. Cada carpeta representa una s
 
 | Semana  | Tareas Completadas  | Proyectos Desarrollados |
 |---------|---------------------|-------------------------|
-| Semana 1| ✅                   | 4                     |
+| Semana 1| ✅                   | 4 / 4                     |
+| Semana 2| 🔄                   | 3 / 6                    |
 
 
 > **🔄** En progreso  
