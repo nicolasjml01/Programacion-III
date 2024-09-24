@@ -16,7 +16,10 @@ El repositorio está organizado de manera semanal. Cada carpeta representa una s
 - **[Proyecto 2: Suma de dos enteros](https://github.com/nicolasjml01/Programacion-III/tree/d94b1060fa45a68504ebf650991bfa99f55ee378/Semana%201/Suma_Enteros)**  
   Un programa que pide dos números al usuario y calcula la suma exponiendola por pantalla.
 
-- **[Proyecto 3: Mayor de tres números](https://github.com/nicolasjml01/Programacion-III/tree/d94b1060fa45a68504ebf650991bfa99f55ee378/Semana%201/Numero_Mayor)**  
+  - **[Proyecto 3: Prueba](https://github.com/nicolasjml01/Programacion-III/tree/8861aad261efdd68b84d356265d4e8de4aee8767/Semana%201/Hola_Mundo)**  
+  Un Hola Mundo que debe ser compilado y ejecutado por linea de comandos.
+
+- **[Proyecto 4: Mayor de tres números](https://github.com/nicolasjml01/Programacion-III/tree/d94b1060fa45a68504ebf650991bfa99f55ee378/Semana%201/Numero_Mayor)**  
   Un programa que pide tres números al usuario y muestra cuál es el mayor, incluyendo casos en los que algunos números son iguales.
 
 
@@ -33,7 +36,7 @@ El repositorio está organizado de manera semanal. Cada carpeta representa una s
 
 | Semana  | Tareas Completadas  | Proyectos Desarrollados |
 |---------|---------------------|-------------------------|
-| Semana 1| 🔄                   | 2                     |
+| Semana 1| ✅                   | 4                     |
 
 
 > **🔄** En progreso  
