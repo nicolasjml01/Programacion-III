@@ -20,6 +20,11 @@ El repositorio está organizado de manera semanal. Cada carpeta representa una s
 
 ### Semana 2: 🚀 **JAR y Scanner**
 
+- **[Proyecto 1: Fecha nacimiento por Scanner](https://github.com/nicolasjml01/Programacion-III/tree/4ad5334a5459a1438991a8661f700e7e9de03bfc/Semana%202/Fecha_Nacimiento_Scanner)** 
+
+- **[Proyecto 2: Fecha nacimiento por Console](https://github.com/nicolasjml01/Programacion-III/tree/4ad5334a5459a1438991a8661f700e7e9de03bfc/Semana%202/Fecha_Nacimiento_Console)**
+
+- **[Proyecto 3: Media Aritmetica](https://github.com/nicolasjml01/Programacion-III/tree/4ad5334a5459a1438991a8661f700e7e9de03bfc/Semana%202/Media_Aritmetica)**
 
 
 > **Nota**: Los proyectos se irán añadiendo a medida que avance en el curso. ¡Cada semana trae nuevos retos!
