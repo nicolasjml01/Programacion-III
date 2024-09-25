@@ -10,7 +10,7 @@ public class App {
 
         while (true) {
             
-            n = Esdia.readInt("Introduce un numero entero: ");
+            n = Esdia.readInt("Introduce el numero de valores de los que quieres hacer media: ");
 
             if (n > 0)
             {

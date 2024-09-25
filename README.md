@@ -26,6 +26,9 @@ El repositorio está organizado de manera semanal. Cada carpeta representa una s
 
 - **[Proyecto 3: Media Aritmetica](https://github.com/nicolasjml01/Programacion-III/tree/4ad5334a5459a1438991a8661f700e7e9de03bfc/Semana%202/Media_Aritmetica)**
 
+- **[Proyecto 4: Problemas entre nextInt() y nextLine()]()**
+
+- **[Proyecto 5: Calcular longitud nombre y apellidos]()**
 
 > **Nota**: Los proyectos se irán añadiendo a medida que avance en el curso. ¡Cada semana trae nuevos retos!
 
@@ -40,8 +43,8 @@ El repositorio está organizado de manera semanal. Cada carpeta representa una s
 
 | Semana  | Tareas Completadas  | Proyectos Desarrollados |
 |---------|---------------------|-------------------------|
-| Semana 1| ✅                   | 4 / 4                     |
-| Semana 2| 🔄                   | 3 / 6                    |
+| Semana 1| ✅                   | 4 / 4                  |
+| Semana 2| ✅                   | 5 / 5                  |
 
 
 > **🔄** En progreso  
