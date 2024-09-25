@@ -26,9 +26,9 @@ El repositorio está organizado de manera semanal. Cada carpeta representa una s
 
 - **[Proyecto 3: Media Aritmetica](https://github.com/nicolasjml01/Programacion-III/tree/4ad5334a5459a1438991a8661f700e7e9de03bfc/Semana%202/Media_Aritmetica)**
 
-- **[Proyecto 4: Problemas entre nextInt() y nextLine()]()**
+- **[Proyecto 4: Problemas entre nextInt() y nextLine()](https://github.com/nicolasjml01/Programacion-III/tree/1550ea3848f622d9dad9289527bb39c5bb676698/Semana%202/Scanner_Problems)**
 
-- **[Proyecto 5: Calcular longitud nombre y apellidos]()**
+- **[Proyecto 5: Calcular longitud nombre y apellidos](https://github.com/nicolasjml01/Programacion-III/tree/1550ea3848f622d9dad9289527bb39c5bb676698/Semana%202/Longitud_Nombre)**
 
 > **Nota**: Los proyectos se irán añadiendo a medida que avance en el curso. ¡Cada semana trae nuevos retos!
 
