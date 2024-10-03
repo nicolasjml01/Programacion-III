@@ -23,6 +23,21 @@ public class Ejercicio1 {
         persona3.setHeightMeters(Esdia.readFloat("Introduce tu altura en metros: "));
         persona3.setWeightKg(Esdia.readFloat("Introduce tu peso en kg: "));
 
+
+        comprobarMayorPesoyAltura(persona1, persona2, persona3);
+        
+        if (mostrarPorPantalla(persona1) == -1){
+            System.out.printf("\nError el peso o la altura es menor o igual que 0 en: %s\n", persona1.getName());
+        }
+        if (mostrarPorPantalla(persona2) == -1){
+            System.out.printf("\nError el peso o la altura es menor o igual que 0 en: %s\n", persona2.getName());
+        }
+        if (mostrarPorPantalla(persona3) == -1){
+            System.out.printf("\nError el peso o la altura es menor o igual que 0 en: %s\n", persona2.getName());
+        }
+    }
+
+    public static void comprobarMayorPesoyAltura(Person persona1, Person persona2, Person persona3){
         if (persona1.getHeightMeters() >= persona2.getHeightMeters()){
             if (persona1.getHeightMeters() >= persona3.getHeightMeters()){
                 System.out.printf("\n%s es el más alto con una altura -> %.2f m\n", persona1.getName(), persona1.getHeightMeters());
@@ -47,19 +62,7 @@ public class Ejercicio1 {
             System.out.printf("\n\n%s es el que mas pesa con un peso de -> %.2f kg\n", persona3.getName(), persona3.getWeightKg()); 
         }
 
-        
-        if (mostrarPorPantalla(persona1) == -1){
-            System.out.printf("\nError el peso o la altura es menor o igual que 0 en: %s\n", persona1.getName());
-        }
-        if (mostrarPorPantalla(persona2) == -1){
-            System.out.printf("\nError el peso o la altura es menor o igual que 0 en: %s\n", persona2.getName());
-        }
-        if (mostrarPorPantalla(persona3) == -1){
-            System.out.printf("\nError el peso o la altura es menor o igual que 0 en: %s\n", persona2.getName());
-        }
-        
     }
-
     // Método para calcular el IMC. *EJERCICIO 3*
     public static int mostrarPorPantalla(Person persona) {
         if (persona.getWeightKg() <= 0 || persona.getHeightMeters() <= 0) {
