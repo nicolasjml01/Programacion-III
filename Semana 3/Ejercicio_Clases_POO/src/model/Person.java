@@ -10,12 +10,12 @@ public class Person {
     // Constructores
     
     // Java tiene un constructor por defecto ( Ya existe por si solo). NO DEVUELVE NADA
-    // Constructor con parámetros (personalizado)
-    public Person(String name, float heightMeters, float weightKg) {
+    // Constructor con parámetros (personalizado). No lo usaremos
+    /*public Person(String name, float heightMeters, float weightKg) {
         this.name = name;
-        this.heightMeters = heightMeters;
-        this.weightKg = weightKg;
-    }
+        this.dweightKg = heightMeters;
+        this.dheightMeters = weightKg;
+    }*/
     //Constructor sin Parámetros
     public Person(){
         // Establecemos valores por defecto
@@ -25,27 +25,7 @@ public class Person {
     }
     // Metodos (logica) -> Comprobaciones de datos
     // Cálculo del IMC
-    // Método para calcular el IMC. *EJERCICIO 3*
-    public double calcularIMC() {
-        if (this.weightKg <= 0 || this.heightMeters <= 0) {
-            System.out.println("Error: Altura o peso no válidos para el cálculo del IMC.");
-            return -1;
-        }
-
-        double imc = this.weightKg / (this.heightMeters * this.heightMeters); // Fórmula del IMC
-        return imc;
-    }
-    // Método para mostrar la información de la persona
-    public void mostrarInformacion() {
-        System.out.println("Nombre: " + this.name);
-        System.out.println("Altura: " + this.heightMeters + " metros");
-        System.out.println("Peso: " + this.weightKg + " kg");
-        
-        double imc = calcularIMC();
-        if (imc != -1) {
-            System.out.println("IMC: " + imc);
-        }
-    }
+    
     // Getters y setters
     public float getWeightKg() {
         return weightKg;
@@ -66,4 +46,5 @@ public class Person {
     public void setName(String name) {
         this.name = name;
     }
+
 }
