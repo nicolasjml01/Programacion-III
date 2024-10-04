@@ -31,7 +31,7 @@ El repositorio está organizado de manera semanal. Cada carpeta representa una s
 - **[Proyecto 5: Calcular longitud nombre y apellidos](https://github.com/nicolasjml01/Programacion-III/tree/1550ea3848f622d9dad9289527bb39c5bb676698/Semana%202/Longitud_Nombre)**
 
 ### Semana 3: 🚀 **Getter y Setter**
-
+- **[Proyecto 1: Ejercicios 1,2,3,4](https://github.com/nicolasjml01/Programacion-III/tree/1550ea3848f622d9dad9289527bb39c5bb676698/Semana%202/Scanner_Problems)**
 
 
 > **Nota**: Los proyectos se irán añadiendo a medida que avance en el curso. ¡Cada semana trae nuevos retos!

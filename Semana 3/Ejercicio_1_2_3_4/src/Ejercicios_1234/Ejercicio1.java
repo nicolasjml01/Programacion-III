@@ -38,6 +38,7 @@ public class Ejercicio1 {
     }
 
     public static void comprobarMayorPesoyAltura(Person persona1, Person persona2, Person persona3){
+        // Vemos el de mayor altura
         if (persona1.getHeightMeters() >= persona2.getHeightMeters()){
             if (persona1.getHeightMeters() >= persona3.getHeightMeters()){
                 System.out.printf("\n%s es el más alto con una altura -> %.2f m\n", persona1.getName(), persona1.getHeightMeters());
@@ -50,6 +51,7 @@ public class Ejercicio1 {
             System.out.printf("\n%s es el más alto con una altura -> %.2f m\n", persona3.getName(), persona3.getHeightMeters()); 
         }
 
+        // Vemos el de mayor peso
         if (persona1.getWeightKg() >= persona2.getWeightKg()){
             if (persona1.getWeightKg() >= persona3.getWeightKg()){
                 System.out.printf("\n\n%s es el que mas pesa con un peso de -> %.2f kg\n", persona1.getName(), persona1.getWeightKg());
