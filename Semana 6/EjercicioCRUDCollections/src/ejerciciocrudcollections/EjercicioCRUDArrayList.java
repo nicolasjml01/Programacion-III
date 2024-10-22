@@ -98,6 +98,9 @@ public class EjercicioCRUDArrayList {
         String nombre = readString_ne("Ingrese el nombre de la persona a eliminar: ");
         Persona personaAEliminar = null;
 
+        /*for (i=0; personas.size();i++){
+            Esto seria otra forma de acceder a las personas, lo de abajo es mejor
+        }*/
         // Atención se debe tener especial cuidado cuando se recorre una
         // colección y se elimina uno de sus elementos. No deberíamos
         // eliminar un elemento empleando el bucle for each

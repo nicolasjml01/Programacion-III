@@ -20,6 +20,7 @@ import java.util.HashSet;
  * Se realiza todo en la misma clase para mayor claridad, sin embargo
  * esto se aplica a las colecciones que residan en cualquier otro objeto del programa.
  * 
+ * Hashset no tiene elementos son iguales
  * 
  * @author Loza
  */
