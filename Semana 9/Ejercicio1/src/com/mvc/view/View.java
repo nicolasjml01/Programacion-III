@@ -31,13 +31,21 @@ public class View {
                                 System.out.println("No implemented");
                                 break;
                             case 5:
-                                
+
                                 break;
                             case 6:
+                                c.expostarJSON();
                                 break;
                             case 7:
                                 break;
                             case 8:
+                                if (c.importarLibrosJSON())
+                                {
+                                    System.out.println("Se ha importado correctamente");
+                                }else
+                                {
+                                    System.err.println("Problema Leyendo JSON");
+                                }
                                 break;
                             case 9:
                                 break;
@@ -64,5 +72,13 @@ public class View {
         System.out.println("9. Importar libros de un fichero XML");
         System.out.println("10. Importar libros de un fichero en formato delimitado por comas CSV");
         System.out.println("11. Salir del programa.");
+    }
+
+    public void showMessage(String string) {
+        System.out.println(string);
+    }
+
+    public void showError(String string) {
+        System.out.println(string);
     }
 }
