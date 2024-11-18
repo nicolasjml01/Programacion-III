@@ -1,1 +1,1 @@
-Plantilla para los ejercicios con MVC
+Plantilla MVC

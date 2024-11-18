@@ -57,7 +57,7 @@ public class View {
             
                         }
                     }
-                }
+    }
             
     private void mostrarMenuOpciones() {
         System.out.println("Menu Quiniela...");

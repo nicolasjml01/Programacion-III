@@ -11,7 +11,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -35,6 +34,7 @@ public class Model {
 
 
     public boolean cargarDatosBinario() {
+        /* 
         File f = rutaBinario.toFile();
 
         if (f.exists() && f.isFile())
@@ -55,7 +55,8 @@ public class Model {
             }
             
 
-        }else return false;
+        }else return false;*/
+        return true;
     }
 
     public boolean salvarDatosBinario() {
@@ -85,7 +86,7 @@ public class Model {
         
     }
     public boolean importarLibrosJSON() {
-        File f= rutaJSON.toFile();
+       /*  File f= rutaJSON.toFile();
         
         if(f.exists() && f.isFile())
         {
@@ -103,7 +104,8 @@ public class Model {
                 }
             }
             return true;
-        }else return false;
+        }else return false;*/
+        return true;
     }
 
     // Importar XML

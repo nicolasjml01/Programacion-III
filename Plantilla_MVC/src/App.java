@@ -1,8 +1,6 @@
-package com.mvc;
-
-import com.mvc.controller.Controller;
-import com.mvc.model.Model;
-import com.mvc.view.View;
+import controller.Controller;
+import model.Model;
+import view.View;
 
 public class App {
     public static void main(String[] args) throws Exception {
