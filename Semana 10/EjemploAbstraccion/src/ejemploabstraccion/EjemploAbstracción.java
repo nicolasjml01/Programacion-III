@@ -87,6 +87,11 @@ public class EjemploAbstracción {
         for (Reciclable objetoReciclable : reciclables) {
             objetoReciclable.reciclar();
         }
+
+        /*// COmo saber si un objeto es recicable?
+        BotellaPlastico b = new BotellaPlastico();
+        if (b instanceof Reciclable) System.out.println("Es un recicable");
+        // Mala Práctica */
     }
     
 }
