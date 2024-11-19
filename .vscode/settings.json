@@ -1,19 +1,13 @@
 {
     "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "biblioteca11.jar",
-        "Semana 9/Ejercicio1/lib/gson-2.10.1.jar",
-        "Semana 9/Ejercicio1/lib/jackson-annotations-2.15.3.jar",
-        "Semana 9/Ejercicio1/lib/jackson-core-2.15.3.jar",
-        "Semana 9/Ejercicio1/lib/jackson-databind-2.15.3.jar",
-        "Semana 9/Ejercicio1/lib/jackson-dataformat-xml-2.15.3.jar",
-        "Semana 9/Ejercicio1/lib/jackson-dataformat-xml-2.16.0-rc1.jar",
-        "Semana 9/Ejercicio1/lib/stax2-api-4.0.0.jar"
+        "c:\\Users\\Usuario\\Desktop\\Programacion-III\\Semana 9\\Ejercicio1\\lib\\jackson-annotations-2.15.3.jar",
+        "c:\\Users\\Usuario\\Desktop\\Programacion-III\\Semana 9\\Ejercicio1\\lib\\jackson-databind-2.15.3.jar",
+        "c:\\Users\\Usuario\\Desktop\\Programacion-III\\biblioteca11.jar",
+        "c:\\Users\\Usuario\\Desktop\\Programacion-III\\Semana 9\\Ejercicio1\\lib\\jackson-dataformat-xml-2.16.0-rc1.jar",
+        "c:\\Users\\Usuario\\Desktop\\Programacion-III\\Semana 9\\Ejercicio1\\lib\\gson-2.10.1.jar",
+        "c:\\Users\\Usuario\\Desktop\\Programacion-III\\Semana 9\\Ejercicio1\\lib\\jackson-core-2.15.3.jar",
+        "c:\\Users\\Usuario\\Desktop\\Programacion-III\\Semana 9\\Ejercicio1\\lib\\jackson-dataformat-xml-2.15.3.jar",
+        "c:\\Users\\Usuario\\Desktop\\Programacion-III\\Semana 9\\Ejercicio1\\lib\\stax2-api-4.0.0.jar"
     ],
-    "java.project.sourcePaths": [
-        "Semana 9/Ejercicio1/src",
-        "Plantilla_MVC2/src",
-        "Plantilla_MVC/src",
-        "Plantilla_MVC/lib"
-    ]
+    "java.project.sourcePaths": []
 }
