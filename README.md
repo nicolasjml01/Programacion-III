@@ -33,6 +33,17 @@ El repositorio está organizado de manera semanal. Cada carpeta representa una s
 ### Semana 3: 🚀 **Getter y Setter**
 - **[Proyecto 1: Ejercicios 1,2,3,4](https://github.com/nicolasjml01/Programacion-III/tree/1550ea3848f622d9dad9289527bb39c5bb676698/Semana%202/Scanner_Problems)**
 
+### Semana 4: 🚀 **Clases y Objetos en Java (POO)**
+- **[Proyecto 1: Ejercicio 1](https://github.com/nicolasjml01/Programacion-III/tree/12785670c7e2ba904b33994ce59c27703012e7fc/Semana_4/Ejercicio_1)**
+
+- **[Proyecto 2: IMC de un usuario](https://github.com/nicolasjml01/Programacion-III/tree/12785670c7e2ba904b33994ce59c27703012e7fc/Semana_4/Ejercicio_2)**
+
+- **[Proyecto 3: Fruteria](https://github.com/nicolasjml01/Programacion-III/tree/12785670c7e2ba904b33994ce59c27703012e7fc/Semana_4/Ejercicio_3)**
+
+- **[Proyecto 4: Notas media alumnos](https://github.com/nicolasjml01/Programacion-III/tree/12785670c7e2ba904b33994ce59c27703012e7fc/Semana_4/Ejercicio_4)**
+
+
+
 
 > **Nota**: Los proyectos se irán añadiendo a medida que avance en el curso. ¡Cada semana trae nuevos retos!
 
@@ -51,6 +62,7 @@ El repositorio está organizado de manera semanal. Cada carpeta representa una s
 | Semana 2| ✅                   | 5 / 5                  |
 | Semana 3| ✅                   | 4 / 4                  |
 | Semana 4| ✅                   | 4 / 4                  |
+| Semana 5| ✅                   | 4 / 4                  |
 
 > **🔄** En progreso  
 > **✅** Completado  
