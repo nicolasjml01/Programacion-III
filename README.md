@@ -49,7 +49,8 @@ El repositorio está organizado de manera semanal. Cada carpeta representa una s
 |---------|---------------------|-------------------------|
 | Semana 1| ✅                   | 4 / 4                  |
 | Semana 2| ✅                   | 5 / 5                  |
-| Semana 3| ✅                   | 5 / 5                  |
+| Semana 3| ✅                   | 4 / 4                  |
+| Semana 4| ✅                   | 4 / 4                  |
 
 > **🔄** En progreso  
 > **✅** Completado  
