@@ -69,7 +69,7 @@ public class App {
     }
 
     private static void modificarCoche() {
-        String matricula = readString("Ingrese la matricula del coche que desea eliminar: ");
+        String matricula = readString("Ingrese la matricula del coche que desea modificar: ");
         Coche cocheAModificar = null;
 
         for(Coche coche : coches)

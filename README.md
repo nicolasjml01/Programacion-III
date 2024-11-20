@@ -42,7 +42,12 @@ El repositorio está organizado de manera semanal. Cada carpeta representa una s
 
 - **[Proyecto 4: Notas media alumnos](https://github.com/nicolasjml01/Programacion-III/tree/12785670c7e2ba904b33994ce59c27703012e7fc/Semana_4/Ejercicio_4)**
 
+### Semana 5: 🚀 **Repaso hasta la fecha y Conceptos POO**
+- **[Proyecto 1: Modificadores de acceso](https://github.com/nicolasjml01/Programacion-III/tree/11de4d5046a96c7cace861d1d3f9eee33657b557/Semana_5/Ejercicio_1)**
 
+- **[Proyecto 2: Ordeenacion de arrays con sort](https://github.com/nicolasjml01/Programacion-III/tree/11de4d5046a96c7cace861d1d3f9eee33657b557/Semana_5/Ejercicio_2)**
+
+- **[Proyecto 3: Ejercicio de repaso](https://github.com/nicolasjml01/Ejercicio_Introduccion_POO/tree/8125e4d685bb4b90534819c841c127e00f72a93f/Ejercicio_POO)**
 
 
 > **Nota**: Los proyectos se irán añadiendo a medida que avance en el curso. ¡Cada semana trae nuevos retos!
@@ -62,7 +67,7 @@ El repositorio está organizado de manera semanal. Cada carpeta representa una s
 | Semana 2| ✅                   | 5 / 5                  |
 | Semana 3| ✅                   | 4 / 4                  |
 | Semana 4| ✅                   | 4 / 4                  |
-| Semana 5| ✅                   | 4 / 4                  |
+| Semana 5| ✅                   | 3 / 3                  |
 
 > **🔄** En progreso  
 > **✅** Completado  
