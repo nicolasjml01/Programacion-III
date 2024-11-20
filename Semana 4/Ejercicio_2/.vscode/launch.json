@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "Ejercicio_2_7dabd1c0"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
@@ -17,7 +24,6 @@
             "mainClass": "App",
             "projectName": "Ejercicio_2_c9a0715",
             "args": "Nikito 50.2 1.63"
-
         }
     ]
 }

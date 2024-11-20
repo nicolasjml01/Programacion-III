@@ -13,5 +13,4 @@ public class App {
         }
             System.out.printf("Total: %d%n", total);
         }
-    }
 }
