@@ -31,5 +31,10 @@ public class Libro {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
-    }    
+    }
+    
+    @Override
+    public String toString() {
+        return String.format("Título: %s | Autor: %s | ISBN: %s", titulo, autor, isbn);
+    }
 }
