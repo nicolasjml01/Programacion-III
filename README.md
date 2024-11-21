@@ -49,6 +49,12 @@ El repositorio está organizado de manera semanal. Cada carpeta representa una s
 
 - **[Proyecto 3: Ejercicio de repaso](https://github.com/nicolasjml01/Ejercicio_Introduccion_POO/tree/8125e4d685bb4b90534819c841c127e00f72a93f/Ejercicio_POO)**
 
+### Semana 6: 🚀 **Introduccion a las colecciones**
+- **[Proyecto 1: Concesionario de coches](https://github.com/nicolasjml01/Programacion-III/tree/a465ca0230d52bdff77b6a938d199e0f21e28852/Semana_6/Ejercicio%201)**
+
+- **[Proyecto 2: Introduccion a POO modificacion CRUD](https://github.com/nicolasjml01/Programacion-III/tree/11de4d5046a96c7cace861d1d3f9eee33657b557/Semana_5/Ejercicio_2)**
+
+- **[Proyecto 3: Libros de una biblioteca con HashMap](https://github.com/nicolasjml01/Programacion-III/tree/a465ca0230d52bdff77b6a938d199e0f21e28852/Semana_6/Ejercicio_3)**
 
 > **Nota**: Los proyectos se irán añadiendo a medida que avance en el curso. ¡Cada semana trae nuevos retos!
 
@@ -68,6 +74,8 @@ El repositorio está organizado de manera semanal. Cada carpeta representa una s
 | Semana 3| ✅                   | 4 / 4                  |
 | Semana 4| ✅                   | 4 / 4                  |
 | Semana 5| ✅                   | 3 / 3                  |
+| Semana 6| ✅                   | 3 / 3                  |
+| Semana 7| ✅                   | 3 / 3                  |
 
 > **🔄** En progreso  
 > **✅** Completado  
