@@ -1,0 +1,1 @@
+Ejercicio Modificado correctamente, pero sin querer me di cuenta que modifique el entregable de introduccion a POO y cuando quise revertirlo ahora estudiando al parcial me he dado cuenta de que lo he borrad. Lo implementaremos de nuevo más adelante.
