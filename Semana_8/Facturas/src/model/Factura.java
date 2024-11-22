@@ -55,16 +55,15 @@ public class Factura {
     
     public String instanciasDelimitadas(String delimitador) {
         // Construir la cadena con el delimitador y el Locale.ENGLISH para decimales
-        return String.format(Locale.ENGLISH, "%s%s%.2f%s%s%s%.2f%s%s%s%s%s%.2f",
-                concepto, delimitador,
+        return String.format(Locale.ENGLISH, "%s%s%.2f%s%s%s%.2f%s%s%s%s%s%s%s%.2f",
+                concepto, delimitador,      
                 descuentoAplicado, delimitador,
-                fecha, delimitador,
-                importe, delimitador,
-                NIF, delimitador,
-                nombre, delimitador,
-                direccion, delimitador,
-                IVA
-        );
+                fecha, delimitador,        
+                importe, delimitador,       
+                NIF, delimitador,           
+                nombre, delimitador,        
+                direccion, delimitador,     
+                IVA);
 
     }
 

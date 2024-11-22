@@ -41,8 +41,8 @@ public class Controller {
         m.exportarHTML(ficheroHTML);
     }
 
-    public void exportarCSV() {
-        m.exportarCSV();
+    public void exportarCSV(String delimitador) {
+        m.exportarCSV(delimitador);
     }
 
     

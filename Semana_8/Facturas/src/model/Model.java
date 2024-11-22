@@ -107,11 +107,12 @@ public class Model {
         }
     }
 
-    public void exportarCSV() {
-        String delimitador = "\t";
-        Path ruta = Rutas.pathToFileInFolderOnDesktop("datosProgra", "facturas1.tsv");
+    public void exportarCSV(String delimitador) {
+        Path ruta = Rutas.pathToFileInFolderOnDesktop("datosProgra", "facturas.tsv");
+        System.out.println(ruta.toString());
 
         ArrayList<String> lineas = new ArrayList<>();
+
         for (Factura facturasExportar: factura)
         {
             lineas.add(facturasExportar.instanciasDelimitadas(delimitador));

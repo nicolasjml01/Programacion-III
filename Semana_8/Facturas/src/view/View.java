@@ -30,7 +30,7 @@ public class View {
                     exportarHTML();                       
                     break;
                 case 4:
-                    c.exportarCSV();
+                    exportarCSV();
                     break;
                 case 5:
                     exit = true;
@@ -88,6 +88,12 @@ public class View {
     {
         String ficheroHTML = Esdia.readString("Introduzca el nombre del fichero HTML: ");
         c.exportarHTML(ficheroHTML);
+    }
+
+    private void exportarCSV()
+    {
+        String delimitador = Esdia.readString("Introduzca el delimitador: ");
+        c.exportarCSV(delimitador);
     }
     
 }
