@@ -109,7 +109,6 @@ public class Model {
 
     public void exportarCSV(String delimitador) {
         Path ruta = Rutas.pathToFileInFolderOnDesktop("datosProgra", "facturas.tsv");
-        System.out.println(ruta.toString());
 
         ArrayList<String> lineas = new ArrayList<>();
 
