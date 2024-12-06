@@ -20,6 +20,6 @@ public class Controller {
         // Aqui haremos toda la logica necesaria para el programa 
             
         // Mostrar Menu al usuario
-        v.showMainMenu();
+        //v.showMainMenu();
     }
 }

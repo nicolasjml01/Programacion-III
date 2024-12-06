@@ -1,6 +1,6 @@
 package view;
 
-import com.coti.tools.Esdia;
+//import com.coti.tools.Esdia;
 import controller.Controller;
 
 public class View {
@@ -9,7 +9,7 @@ public class View {
     public void setController(Controller controller) {
         this.c = controller;
     }
-
+/* 
     public void showMainMenu() {
         // Menu por consola en bucle
         boolean exit = false;
@@ -30,4 +30,5 @@ public class View {
         System.out.println("1. ");
         System.out.println("2. ");
     }
+*/
 }
