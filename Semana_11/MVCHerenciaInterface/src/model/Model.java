@@ -28,14 +28,7 @@ public class Model {
         ficheroEstadoSerializado = Paths.get(System.getProperty("user.home"), "Desktop", "model.bin").toFile();
         alumnos = new ArrayList<>();
     }
-
-    /**
-     * *
-     *
-     * Permite exportar los alumnos empleando el repository cargado.
-     *
-     * @return
-     */
+     // Permite exportar los alumnos empleando el repository cargado.
     public boolean exportarAlumnos() {
         return repository.exportarAlumnos(alumnos);
     }

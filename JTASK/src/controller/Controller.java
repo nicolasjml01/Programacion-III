@@ -15,12 +15,24 @@ public class Controller {
         view.setController(this);
     }
 
-    public void setView(BaseView view) {
-        this.view = view;
+    //Inicio de la aplicación
+    public void initAplication() {
+        if (model.importTaskBin())
+        {
+            view.showMessage("Fichero Binario Cargado Correctamente");
+        }else
+        {
+            view.showErrorMessage("No se ha encontrado fichero binario");
+        }
+
+        // Menu principal
+        view.init();
     }
-
     
-
+    public boolean createTask(int identifier, String title, String date, String content, int priority,
+            int estimatedDuration, boolean completed) {
+        return model.createTask(identifier, title, date, content, priority, estimatedDuration, completed);
+    }
     
 
 }
