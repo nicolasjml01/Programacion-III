@@ -1,5 +1,6 @@
 import controller.Controller;
 import model.Model;
+import model.exceptions.RepositoryException;
 import model.interfacesClases.BinaryRepository;
 import model.interfacesClases.IRepository;
 import model.interfacesClases.NotionRepository;
@@ -8,16 +9,24 @@ import view.InteractiveView;
 
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws RepositoryException {
         IRepository repository;
-        BaseView view = new InteractiveView();
-        if(args.length == 4)
+        BaseView view;
+
+        if(args.length == 2)
         {
             // Opcion bin
-            repository = new NotionRepository();
-        }else
+            view = new InteractiveView();
+            repository = new BinaryRepository();
+        }if (args.length == 4)
         {
-            // Opcion por defecto
+            // Opcion Notion (YA LO IMPLEMENTAREMOS)
+            view = new InteractiveView();
+            repository = new NotionRepository();
+        }else 
+        {
+            // Bin por defecto
+            view = new InteractiveView();
             repository = new BinaryRepository();
         }
 

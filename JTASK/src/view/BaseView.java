@@ -1,5 +1,9 @@
 package view;
+import java.util.List;
+
 import controller.Controller;
+import model.Task;
+import model.exceptions.RepositoryException;
 
 public abstract class BaseView {
     
@@ -10,9 +14,10 @@ public abstract class BaseView {
         this.controller = controller;
     }
 
-    public abstract void init(); 
+    public abstract void init() throws RepositoryException; 
     public abstract void showMessage(String msg); 
     public abstract void showErrorMessage(String msg);
-    public abstract void end();
+    public abstract void showTasks(List<Task> tasks);
+    public abstract boolean end();
 
 }

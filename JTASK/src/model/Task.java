@@ -26,12 +26,14 @@ public class Task implements Serializable{
     }
     
     // Método para parsear la fecha
-    private LocalDate parseDate(String date) {
+    private LocalDate parseDate(String dateString) {
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            return LocalDate.parse(date, formatter);
+            return LocalDate.parse(dateString, formatter);
         } catch (DateTimeParseException e) {
-            throw new IllegalArgumentException("Fecha inválida: " + date);
+            // Mostrar un mensaje informativo de error
+            System.err.println("Fecha inválida: \"" + dateString);
+            return null; // O puedes asignar LocalDate.now() si prefieres
         }
     }
 
@@ -50,8 +52,8 @@ public class Task implements Serializable{
     public LocalDate getDate() {
         return date;
     }
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setDate(String date) {
+        this.date = parseDate(date);
     }
     public String getContent() {
         return content;
@@ -76,9 +78,5 @@ public class Task implements Serializable{
     }
     public void setCompleted(boolean completed) {
         this.completed = completed;
-    }
-
-    
-
-    
+    }    
 }
