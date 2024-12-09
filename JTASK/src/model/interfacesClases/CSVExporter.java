@@ -16,7 +16,7 @@ public class CSVExporter implements IExporter{
 
     @Override
     public List<Task> importTasks() throws ExporterException {
-        File file = Rutas.fileToFileOnDesktop("TasksCSV");
+        File file = Rutas.fileToFileOnDesktop("TasksCSV.csv");
         List<Task> taskList = new ArrayList<>(); // Lista temporal de tareas válidas
 
         if (!file.exists() || !file.isFile()) {
@@ -74,7 +74,7 @@ public class CSVExporter implements IExporter{
         sortByDate(exportList);
 
         // Ruta donde se guardará el archivo
-        File file = Rutas.fileToFileOnDesktop("TasksCSV");
+        File file = Rutas.fileToFileOnDesktop("TasksCSV.csv");
         final String DELIMITADOR = "\t";
 
         // Creamos una lista temporal para almacenar las tareas como cadenas delimitadas
@@ -97,9 +97,9 @@ public class CSVExporter implements IExporter{
     public void sortByDate(ArrayList<Task> task) throws ExporterException {
        try {
         Collections.sort(task, (task1, task2) -> task1.getDate().compareTo(task2.getDate()));
-    } catch (Exception e) {
-        throw new ExporterException("Error al ordenar las tareas por fecha: " + e.getMessage(), e);
-    }
+        } catch (Exception e) {
+            throw new ExporterException("Error al ordenar las tareas por fecha: " + e.getMessage(), e);
+        }
     }
     
 }

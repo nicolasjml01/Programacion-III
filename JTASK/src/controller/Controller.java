@@ -9,6 +9,7 @@ import model.Task;
 import model.exceptions.ExporterException;
 import model.exceptions.RepositoryException;
 import model.interfacesClases.CSVExporter;
+import model.interfacesClases.JSONExporter;
 import view.BaseView;
 
 public class Controller {
@@ -102,6 +103,28 @@ public class Controller {
         try {
             model = new Model(new CSVExporter()); 
             model.exportToCSV();
+            view.showMessage("Fichero CSV exportado correctamente.");
+        } catch (ExporterException e) {
+            view.showErrorMessage("Error al exportar el fichero CSV: " + e.getMessage());
+        } catch (RepositoryException e) {
+            view.showErrorMessage("Error obteniendo el listado de tareas: " + e.getMessage());
+        }
+    }
+
+    public void importFromJSON() {
+        try {
+            model = new Model(new JSONExporter());
+            model.importFromJSON();
+            view.showMessage("Fichero CSV cargado correctamente.");
+        } catch (ExporterException e) {
+            view.showErrorMessage("Error al cargar desde el fichero CSV: " + e.getMessage());
+        }
+    }
+
+    public void exportToJSON() {
+        try {
+            model = new Model(new JSONExporter()); 
+            model.exportToJSON();
             view.showMessage("Fichero CSV exportado correctamente.");
         } catch (ExporterException e) {
             view.showErrorMessage("Error al exportar el fichero CSV: " + e.getMessage());

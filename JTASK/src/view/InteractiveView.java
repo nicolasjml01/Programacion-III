@@ -211,7 +211,7 @@ public class InteractiveView extends BaseView{
 
     private void importFromJSON()
     {    
-
+        controller.importFromJSON();
     }
 
     private void exportToCSV()
@@ -221,7 +221,7 @@ public class InteractiveView extends BaseView{
 
     private void exportToJSON()
     {    
-
+        controller.exportToJSON();
     }
 
     // Finalizacion de la aplicacion

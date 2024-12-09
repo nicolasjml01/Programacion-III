@@ -62,9 +62,7 @@ public class Model {
                 try {
                     addTask(task); // Intentar añadir la tarea al repositorio
                 } catch (RepositoryException e) {
-                    // Reemplazar el System.err con un ExporterException más descriptivo
-                    throw new ExporterException("Error al añadir la tarea con ID " 
-                            + task.getIdentifier() + ": " + e.getMessage(), e);
+                    throw new ExporterException("Error al añadir la tarea con ID " + task.getIdentifier() + ": " + e.getMessage(), e);
                 }
             }
         } catch (ExporterException e) {
@@ -76,8 +74,27 @@ public class Model {
         ArrayList<Task> exportList = getAllTask();
         exporter.exportTasks(exportList);
     }
-    
 
+    public void importFromJSON() throws ExporterException {
+        try {
+            List<Task> tasksFromFile = exporter.importTasks(); // Obtener tareas desde el exporter
+    
+            for (Task task : tasksFromFile) {
+                try {
+                    addTask(task); // Intentar añadir la tarea al repositorio
+                } catch (RepositoryException e) {
+                    throw new ExporterException("Error al añadir la tarea con ID " + task.getIdentifier() + ": " + e.getMessage(), e);
+                }
+            }
+        } catch (ExporterException e) {
+            throw new ExporterException("Error al importar tareas desde CSV: " + e.getMessage(), e);
+        }
+    }
+
+    public void exportToJSON() throws RepositoryException, ExporterException {
+        ArrayList<Task> exportList = getAllTask();
+        exporter.exportTasks(exportList);
+    }
 
 
 
