@@ -5,12 +5,13 @@ import java.util.List;
 import com.coti.tools.Esdia;
 
 import model.Task;
+import model.exceptions.ExporterException;
 import model.exceptions.RepositoryException;
 
 public class InteractiveView extends BaseView{
 
     @Override
-    public void init() throws RepositoryException 
+    public void init() throws RepositoryException, ExporterException 
     {
         System.out.println("Bienvenido a la aplicación de gestión de tareas");
         controller.loadData();
@@ -29,7 +30,7 @@ public class InteractiveView extends BaseView{
         System.out.println(msg);
     }
 
-    public void showMainMenu() throws RepositoryException
+    public void showMainMenu() throws RepositoryException, ExporterException
     {
         // Menu por consola en bucle
         boolean exit = false;
@@ -164,7 +165,7 @@ public class InteractiveView extends BaseView{
 
 
     // Export/Import Options
-    private void showExportImportMenu() throws RepositoryException
+    private void showExportImportMenu() throws RepositoryException, ExporterException
     {
         // Menu por consola en bucle
         boolean exit = false;
@@ -196,16 +197,16 @@ public class InteractiveView extends BaseView{
     private void showExportImportOptions()
     {
         System.out.println("\n--- Menú Exportar/Importar ---");
-        System.out.println("1. Exportar tareas a JSON");
-        System.out.println("2. Exportar tareas a CSV");
-        System.out.println("3. Importar tareas desde JSON");
-        System.out.println("4. Importar tareas desde CSV");
+        System.out.println("1. Importar tareas desde CSV");
+        System.out.println("2. Importar tareas desde JSON");
+        System.out.println("3. Exportar tareas a CSV");
+        System.out.println("4. Exportar tareas a JSON");
         System.out.println("5. Volver al menú principal");
     }  
     
-    private void importFromCSV()
+    private void importFromCSV() throws ExporterException
     {
-
+        controller.importFromCSV();
     }
 
     private void importFromJSON()
@@ -215,7 +216,7 @@ public class InteractiveView extends BaseView{
 
     private void exportToCSV()
     {    
-
+        controller.exportToCSV();
     }
 
     private void exportToJSON()

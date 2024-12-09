@@ -1,11 +1,14 @@
 package controller;
 
+import java.rmi.server.ExportException;
 import java.util.ArrayList;
 import java.util.List;
 
 import model.Model;
 import model.Task;
+import model.exceptions.ExporterException;
 import model.exceptions.RepositoryException;
+import model.interfacesClases.CSVExporter;
 import view.BaseView;
 
 public class Controller {
@@ -21,7 +24,7 @@ public class Controller {
     }
 
     //Inicio de la aplicación
-    public void initAplication() throws RepositoryException {
+    public void initAplication() throws RepositoryException, ExporterException {
         view.init();
     }
 
@@ -70,7 +73,7 @@ public class Controller {
             List<Task> tasks = model.getAllTask();  // Obtener una copia de las tareas
             view.showTasks(tasks);  // Pasar las tareas a la vista para que las muestre
         } catch (RepositoryException e) {
-            view.showMessage("Error al cargar las tareas: " + e.getMessage());
+            view.showErrorMessage("Error al cargar las tareas: " + e.getMessage());
         }
     }
 
@@ -81,7 +84,29 @@ public class Controller {
             model.saveData();
             view.showMessage("Fichero binario creado correctamente");
         } catch (RepositoryException e) {
-            view.showMessage("Error al crear el fichero binario: " + e.getMessage());
+            view.showErrorMessage("Error al crear el fichero binario: " + e.getMessage());
+        }
+    }
+
+    public void importFromCSV() throws ExporterException {
+        try {
+            model = new Model(new CSVExporter());
+            model.importFromCSV();
+            view.showMessage("Fichero CSV cargado correctamente.");
+        } catch (ExporterException e) {
+            view.showErrorMessage("Error al cargar desde el fichero CSV: " + e.getMessage());
+        }
+    }
+
+    public void exportToCSV() {
+        try {
+            model = new Model(new CSVExporter()); 
+            model.exportToCSV();
+            view.showMessage("Fichero CSV exportado correctamente.");
+        } catch (ExporterException e) {
+            view.showErrorMessage("Error al exportar el fichero CSV: " + e.getMessage());
+        } catch (RepositoryException e) {
+            view.showErrorMessage("Error obteniendo el listado de tareas: " + e.getMessage());
         }
     }
     

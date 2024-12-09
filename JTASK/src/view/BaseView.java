@@ -3,6 +3,7 @@ import java.util.List;
 
 import controller.Controller;
 import model.Task;
+import model.exceptions.ExporterException;
 import model.exceptions.RepositoryException;
 
 public abstract class BaseView {
@@ -14,7 +15,7 @@ public abstract class BaseView {
         this.controller = controller;
     }
 
-    public abstract void init() throws RepositoryException; 
+    public abstract void init() throws RepositoryException, ExporterException; 
     public abstract void showMessage(String msg); 
     public abstract void showErrorMessage(String msg);
     public abstract void showTasks(List<Task> tasks);

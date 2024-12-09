@@ -1,6 +1,6 @@
 package model.exceptions;
 
-public class ExporterException extends Exception {
+public class ExporterException extends Exception{
     public ExporterException(String message) {
         super(message);
     }

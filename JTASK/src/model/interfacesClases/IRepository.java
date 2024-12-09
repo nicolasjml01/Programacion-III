@@ -1,7 +1,6 @@
 package model.interfacesClases;
 
 import java.util.ArrayList;
-
 import model.Task;
 import model.exceptions.RepositoryException;
 

@@ -1,5 +1,6 @@
 import controller.Controller;
 import model.Model;
+import model.exceptions.ExporterException;
 import model.exceptions.RepositoryException;
 import model.interfacesClases.BinaryRepository;
 import model.interfacesClases.IRepository;
@@ -9,7 +10,7 @@ import view.InteractiveView;
 
 
 public class App {
-    public static void main(String[] args) throws RepositoryException {
+    public static void main(String[] args) throws RepositoryException, ExporterException {
         IRepository repository;
         BaseView view;
 
