@@ -29,7 +29,7 @@ public class Controller {
     public void loadData() throws RepositoryException {
         try {
             model.loadData();
-            view.showMessage("Datos cargados correctamente.");
+            view.showMessage("Exito accediendo/cargando la base de datos.");
         } catch (RepositoryException ex) {
             view.showErrorMessage("Error al cargar los datos: " + ex.getMessage());
         }

@@ -19,18 +19,19 @@ public class App {
             // Opcion bin
             view = new InteractiveView();
             repository = new BinaryRepository();
-        }if (args.length == 4)
+        }else if (args.length == 4)
         {
-            // Opcion Notion (YA LO IMPLEMENTAREMOS)
-            view = new InteractiveView();
-            repository = new NotionRepository();
+            // Opcion Notion
+            String apiToken = args[2];
+            String databaseId = args[3];
+            repository = new NotionRepository(apiToken, databaseId);
         }else 
         {
             // Bin por defecto
-            view = new InteractiveView();
             repository = new BinaryRepository();
         }
 
+        view = new InteractiveView();
         Model model = new Model(repository);
         Controller controller = new Controller(model, view);
         controller.initAplication();
