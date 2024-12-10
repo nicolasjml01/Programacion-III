@@ -131,8 +131,12 @@ public class InteractiveView extends BaseView{
         // Si la tarea existe, mostrar los detalles y permitir la modificación
         if (task != null) {
             showTask(task);
-            controller.removeTask(id);                
-            showMessage("Tarea eliminada correctamente.");
+            boolean result = Esdia.yesOrNo("¿Seguro que desea eliminar esta tarea? (y/n): ");
+            if (result)
+            {
+                controller.removeTask(id);                
+                showMessage("Tarea eliminada correctamente.");
+            }else System.out.println("Volviendo al menu CRUD....");
         } else {
             showErrorMessage("No existe la tarea con el identificador: " + id);
         }
