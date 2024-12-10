@@ -94,13 +94,12 @@ public class NotionRepository implements IRepository{
             title = properties.get("TaskTitle").getRichText().get(0).getText().getContent();
             content = properties.get("Content").getRichText().get(0).getText().getContent();
             dateString = properties.get("Date").getDate().getStart();
-            priority = (int) properties.get("Priority").getNumber();
-            estimatedDuration = (int) properties.get("Estimated Duration").getNumber();
+            priority = properties.get("Priority").getNumber().intValue();
+            estimatedDuration = properties.get("Estimated Duration").getNumber().intValue();
             completed = properties.get("Completed").getCheckbox();
         } catch (Exception e) {
             throw new RepositoryException("Error al mapear los datos de la tarea: " + e.getMessage(), e);
         }
-    
         // Crear y devolver el objeto Task
         return new Task(identifier, title, dateString, content, priority, estimatedDuration, completed);
     }
