@@ -1,9 +1,7 @@
 package view;
-import java.util.ArrayList;
+
 import java.util.List;
-
 import com.coti.tools.Esdia;
-
 import model.Task;
 import model.exceptions.ExporterException;
 import model.exceptions.RepositoryException;
@@ -78,12 +76,18 @@ public class InteractiveView extends BaseView{
                     deleteTask();
                     break;
                 case 3:
-                    modifyTask();
+                    modifyTaskStatus();
                     break;
                 case 4:
-                    getAllTask();
+                    modifyTask();
                     break;
                 case 5:
+                    getAllTask();
+                    break;
+                case 6:
+                    ShowUncompletedTasks();
+                    break;
+                case 7:
                     exit = true;
                     break;
                 default:
@@ -97,9 +101,11 @@ public class InteractiveView extends BaseView{
         System.out.println("\n--- Menu CRUD ---");
         System.out.println("1. Crear tarea");
         System.out.println("2. Eliminar tarea");
-        System.out.println("3. Modificar Tarea");
-        System.out.println("4. Ver listado de tareas");
-        System.out.println("5. Volver al menú principal");
+        System.out.println("3. Modificar estado de la tarea");
+        System.out.println("4. Modificar Tarea completa");
+        System.out.println("5. Ver listado de tareas");
+        System.out.println("6. Ver listado de tareas sin completar ordenadas por prioridad");
+        System.out.println("7. Volver al menú principal");
     }
 
     private void createTask() throws RepositoryException
@@ -119,14 +125,48 @@ public class InteractiveView extends BaseView{
     private void deleteTask() throws RepositoryException
     {
         int id = Esdia.readInt("Introduzca el identificador de la tarea a eliminar: ");
-        controller.removeTask(id);
+        // Obtener la tarea si existe
+        Task task = controller.existsTask(id);
+
+        // Si la tarea existe, mostrar los detalles y permitir la modificación
+        if (task != null) {
+            showTask(task);
+            controller.removeTask(id);                
+            showMessage("Tarea eliminada correctamente.");
+        } else {
+            showErrorMessage("No existe la tarea con el identificador: " + id);
+        }
     }
 
+    private void modifyTaskStatus() throws RepositoryException {
+        int id = Esdia.readInt("Introduzca el identificador de la tarea a la cual modificar su estado: ");
+        
+        // Obtener la tarea si existe
+        Task task = controller.existsTask(id);
+        
+        // Si la tarea existe, mostrar los detalles y permitir la modificación
+        if (task != null) {
+            showTask(task);   
+            boolean completed = Esdia.yesOrNo("¿Está la tarea completada? (y/n): ");
+            controller.modifyTask(id, null, null, null, -1, -1, completed);
+            
+            showMessage("Estado de la tarea modificado correctamente.");
+            } else {
+                showErrorMessage("No existe la tarea con el identificador: " + id);
+            }
+        }
+             
     private void modifyTask() throws RepositoryException
     {
         int id = Esdia.readInt("Introduzca el identificador de la tarea a modificar: ");
-        if(controller.existsTask(id))
-        {
+
+        // Obtener la tarea si existe
+        Task task = controller.existsTask(id);
+        
+        // Si la tarea existe, mostrar los detalles y permitir la modificación
+        if (task != null) {
+            showTask(task);
+            
             String title = Esdia.readString("Ingrese el titulo de la tarea: ");
             String date = Esdia.readString("Introduce la fecha de la tarea (dd/mm/yyyy): ");
             String content = Esdia.readString("Ingrese la descripcion de la tarea: ");
@@ -134,13 +174,37 @@ public class InteractiveView extends BaseView{
             int estimatedDuration = Esdia.readInt("Introduzca la duracion de la tarea (en minutos): ");
             boolean completed = Esdia.yesOrNo("¿Esta la tarea completada? (y/n): ");
             controller.modifyTask(id,title, date, content, priority, estimatedDuration, completed);
-        }else showErrorMessage("No existe la tarea con tal identificador: " + id);
-        
+            
+            showMessage("Estado de la tarea modificado correctamente.");
+        } else {
+            showErrorMessage("No existe la tarea con el identificador: " + id);
+        }
+    }
+
+    private void showTask(Task task) {
+        // Mostrar detalles de la tarea
+        System.out.println("Tarea Seleccionada:");
+        System.out.println(String.format("%-10s %-30s %-12s %-40s %-10s %-15s %-12s", 
+                                    "ID", "Title", "Date", "Content", "Priority", "Duration", "Completed"));
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("%-10d %-30s %-12s %-40s %-10d %-15d %-12b\n",
+        task.getIdentifier(),
+        task.getTitle(),
+        task.getDate().toString(),
+        task.getContent(),
+        task.getPriority(),
+        task.getEstimatedDuration(),
+        task.isCompleted());
     }
 
     private void getAllTask() throws RepositoryException
     {
         controller.getAllTask();
+    }
+
+    private void ShowUncompletedTasks() throws RepositoryException
+    {
+        controller.ShowUncompletedTasks();
     }
     
     @Override
@@ -155,7 +219,7 @@ public class InteractiveView extends BaseView{
         System.out.printf("%-10d %-30s %-12s %-40s %-10d %-15d %-12b\n",
         task.getIdentifier(),
         task.getTitle(),
-        task.getDate().toString(),  // Para convertir LocalDate a String
+        task.getDate().toString(),
         task.getContent(),
         task.getPriority(),
         task.getEstimatedDuration(),

@@ -1,6 +1,7 @@
 package model.interfacesClases;
 
 import java.util.ArrayList;
+
 import model.Task;
 import model.exceptions.RepositoryException;
 
@@ -22,8 +23,10 @@ public interface IRepository {
     void modifyTask(int id, String title, String date, String content, int priority, int estimatedDuration, boolean completed) throws RepositoryException;
 
     // Comprueba si existe una tarea con ese identificador
-    boolean existsTask(int id) throws RepositoryException;
+    Task existsTask(int id) throws RepositoryException;
 
     // Obtiene todas las tareas del repositorio
     ArrayList<Task> getAllTask() throws RepositoryException;
+
+    ArrayList<Task> getUncompletedTasks() throws RepositoryException;;
 }

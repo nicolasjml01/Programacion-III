@@ -1,9 +1,6 @@
 package controller;
 
-import java.rmi.server.ExportException;
-import java.util.ArrayList;
 import java.util.List;
-
 import model.Model;
 import model.Task;
 import model.exceptions.ExporterException;
@@ -56,7 +53,7 @@ public class Controller {
         }
     }
 
-    public boolean existsTask(int id) throws RepositoryException {
+    public Task existsTask(int id) throws RepositoryException {
         return model.existsTask(id);
     }
 
@@ -78,6 +75,14 @@ public class Controller {
         }
     }
 
+    public void ShowUncompletedTasks() {
+        try {
+            List<Task> tasks = model.getUncompletedTasks();  // Obtener una copia de las tareas sin completar
+            view.showTasks(tasks);  // Pasar las tareas a la vista para que las muestre
+        } catch (RepositoryException e) {
+            view.showErrorMessage("Error al cargar las tareas: " + e.getMessage());
+        }
+    }
 
     // Exportar a archvio bin
     public void saveData() {
@@ -89,19 +94,22 @@ public class Controller {
         }
     }
 
+    // Exportar o importar a CSV o JSON
     public void importFromCSV() throws ExporterException {
         try {
-            model = new Model(new CSVExporter());
+            // Configuramos el exporter sin crear un nuevo Model
+            model.setExporter(new CSVExporter());
             model.importFromCSV();
-            view.showMessage("Fichero CSV cargado correctamente.");
+            view.showMessage("Fichero CSV importado correctamente.");
         } catch (ExporterException e) {
-            view.showErrorMessage("Error al cargar desde el fichero CSV: " + e.getMessage());
+            view.showErrorMessage("Error al importar el fichero CSV: " + e.getMessage());
         }
     }
 
     public void exportToCSV() {
         try {
-            model = new Model(new CSVExporter()); 
+            // Configuramos el exporter sin crear un nuevo Model
+            model.setExporter(new CSVExporter());
             model.exportToCSV();
             view.showMessage("Fichero CSV exportado correctamente.");
         } catch (ExporterException e) {
@@ -113,25 +121,26 @@ public class Controller {
 
     public void importFromJSON() {
         try {
-            model = new Model(new JSONExporter());
+            // Configuramos el exporter sin crear un nuevo Model
+            model.setExporter(new JSONExporter());
             model.importFromJSON();
-            view.showMessage("Fichero CSV cargado correctamente.");
+            view.showMessage("Fichero JSON importado correctamente.");
         } catch (ExporterException e) {
-            view.showErrorMessage("Error al cargar desde el fichero CSV: " + e.getMessage());
+            view.showErrorMessage("Error al exportar el fichero JSON: " + e.getMessage());
         }
     }
 
     public void exportToJSON() {
         try {
-            model = new Model(new JSONExporter()); 
+            // Configuramos el exporter sin crear un nuevo Model
+            model.setExporter(new JSONExporter());
             model.exportToJSON();
-            view.showMessage("Fichero CSV exportado correctamente.");
+            view.showMessage("Fichero JSON importado correctamente.");
         } catch (ExporterException e) {
-            view.showErrorMessage("Error al exportar el fichero CSV: " + e.getMessage());
+            view.showErrorMessage("Error al exportar el fichero JSON: " + e.getMessage());
         } catch (RepositoryException e) {
             view.showErrorMessage("Error obteniendo el listado de tareas: " + e.getMessage());
         }
     }
-    
 
 }

@@ -14,7 +14,7 @@ public class NotionRepository implements IRepository{
     }
     
     @Override
-    public boolean existsTask(int id) throws RepositoryException {
+    public Task existsTask(int id) throws RepositoryException {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'existsTask'");
     }
@@ -47,6 +47,12 @@ public class NotionRepository implements IRepository{
     public void saveData() throws RepositoryException {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'saveData'");
+    }
+
+    @Override
+    public ArrayList<Task> getUncompletedTasks() throws RepositoryException {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getUncompletedTasks'");
     }
     
 }

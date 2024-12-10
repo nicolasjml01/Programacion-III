@@ -14,11 +14,18 @@ public class Model {
     File ficheroEstadoSerializado;
     
     // Constructor para inyectar la implementación específica
+    public Model(IRepository repository, IExporter exporter) {
+        this.repository = repository;
+        this.exporter = exporter;
+    }
+
+    // Constructor si solo se conoce el repositorio inicialmente
     public Model(IRepository repository) {
         this.repository = repository;
     }
 
-    public Model(IExporter exporter) {
+    // Setter para configurar el exporter después de instanciar el Model
+    public void setExporter(IExporter exporter) {
         this.exporter = exporter;
     }
 
@@ -36,7 +43,7 @@ public class Model {
         repository.removeTask(id);
     }
 
-    public boolean existsTask(int id) throws RepositoryException {
+    public Task existsTask(int id) throws RepositoryException {
         return repository.existsTask(id);
     }
 
@@ -47,6 +54,10 @@ public class Model {
 
     public ArrayList<Task> getAllTask() throws RepositoryException {
         return repository.getAllTask();
+    }
+
+    public List<Task> getUncompletedTasks() throws RepositoryException {
+        return repository.getUncompletedTasks();
     }
 
     // Exportar al fichero binario
@@ -71,7 +82,7 @@ public class Model {
     }
 
     public void exportToCSV() throws RepositoryException, ExporterException {
-        ArrayList<Task> exportList = getAllTask();
+        ArrayList<Task> exportList = repository.getAllTask();
         exporter.exportTasks(exportList);
     }
 
@@ -92,10 +103,8 @@ public class Model {
     }
 
     public void exportToJSON() throws RepositoryException, ExporterException {
-        ArrayList<Task> exportList = getAllTask();
+        ArrayList<Task> exportList = repository.getAllTask();
         exporter.exportTasks(exportList);
     }
-
-
 
 }

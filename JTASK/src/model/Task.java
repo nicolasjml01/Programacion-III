@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Locale;
 
 public class Task implements Serializable{
     private int identifier;
@@ -37,6 +38,23 @@ public class Task implements Serializable{
         }
     }
 
+    public String getInstanceAsDelimitedString(String delimiter) {
+        String stringDate = parseDateToString(date);
+                // Cuidado con el Locale en el caso de numeros de coma flotante
+        return String.format(Locale.ENGLISH, "%d" + delimiter + "%s" + delimiter + "%s" + delimiter + "%s" + delimiter + "%d" + delimiter + "%d" + delimiter + "%s", 
+                                            identifier, title, stringDate, content, priority, estimatedDuration, completed);
+    }
+        
+    // Método para convertir LocalDate a String
+    private String parseDateToString(LocalDate dateToParse) {
+        if (dateToParse == null) {
+            System.err.println("Error parseando la fecha a String");
+        }
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return dateToParse.format(formatter);
+    }
+
+        
     public int getIdentifier() {
         return identifier;
     }
