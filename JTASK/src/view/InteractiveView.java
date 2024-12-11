@@ -113,7 +113,7 @@ public class InteractiveView extends BaseView{
         System.out.println("\n--- Crear Tarea ---");
         int identifier = Esdia.readInt("Ingrese el ID de la tarea: ");
         String title = Esdia.readString("Ingrese el titulo de la tarea: ");
-        String date = Esdia.readString("Introduce la fecha de la tarea (dd/mm/yyyy): ");
+        String date = Esdia.readString("Introduce la fecha de la tarea (yyyy-mm-dd): ");
         String content = Esdia.readString("Ingrese la descripcion de la tarea: ");
         int priority = Esdia.readInt("Introduzca la prioridad de la tarea (Entre 1 y 5)", 1, 5);
         int estimatedDuration = Esdia.readInt("Introduzca la duracion de la tarea (en minutos): ");
@@ -172,7 +172,7 @@ public class InteractiveView extends BaseView{
             showTask(task);
             
             String title = Esdia.readString("Ingrese el titulo de la tarea: ");
-            String date = Esdia.readString("Introduce la fecha de la tarea (dd/mm/yyyy): ");
+            String date = Esdia.readString("Introduce la fecha de la tarea (yyyy-mm-dd): ");
             String content = Esdia.readString("Ingrese la descripcion de la tarea: ");
             int priority = Esdia.readInt("Introduzca la prioridad de la tarea (Entre 1 y 5)", 1, 5);
             int estimatedDuration = Esdia.readInt("Introduzca la duracion de la tarea (en minutos): ");

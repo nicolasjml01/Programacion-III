@@ -29,7 +29,7 @@ public class Task implements Serializable{
     // Método para parsear la fecha
     private LocalDate parseDate(String dateString) {
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             return LocalDate.parse(dateString, formatter);
         } catch (DateTimeParseException e) {
             // Mostrar un mensaje informativo de error

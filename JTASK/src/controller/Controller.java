@@ -68,8 +68,8 @@ public class Controller {
 
     public void getAllTask() {
         try {
-            List<Task> tasks = model.getAllTask();  // Obtener una copia de las tareas
-            view.showTasks(tasks);  // Pasar las tareas a la vista para que las muestre
+            List<Task> tasks = model.getAllTask();
+            view.showTasks(tasks);
         } catch (RepositoryException e) {
             view.showErrorMessage("Error al cargar las tareas: " + e.getMessage());
         }
@@ -77,8 +77,8 @@ public class Controller {
 
     public void ShowUncompletedTasks() {
         try {
-            List<Task> tasks = model.getUncompletedTasks();  // Obtener una copia de las tareas sin completar
-            view.showTasks(tasks);  // Pasar las tareas a la vista para que las muestre
+            List<Task> tasks = model.getUncompletedTasks();
+            view.showTasks(tasks);
         } catch (RepositoryException e) {
             view.showErrorMessage("Error al cargar las tareas: " + e.getMessage());
         }
@@ -87,10 +87,10 @@ public class Controller {
     // Exportar a archvio bin
     public void saveData() {
         try {
+            view.showMessage("Finalizacion del programa realizada correctamente");
             model.saveData();
-            view.showMessage("Fichero binario creado correctamente");
         } catch (RepositoryException e) {
-            view.showErrorMessage("Error al crear el fichero binario: " + e.getMessage());
+            view.showErrorMessage("Error al finalizar el programa: " + e.getMessage());
         }
     }
 

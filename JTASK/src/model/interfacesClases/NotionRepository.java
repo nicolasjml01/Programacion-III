@@ -3,6 +3,7 @@ package model.interfacesClases;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 import model.Task;
 import model.exceptions.RepositoryException;
@@ -22,8 +23,6 @@ import notion.api.v1.request.pages.UpdatePageRequest;
 public class NotionRepository implements IRepository{
     private final NotionClient client;
     private final String databaseId;
-    private final String titleColumnName = "Identifier"; // Este es el nombre de la columna que se utilizará 
-                                                        // como clave primaria única de type Title en Notion
 
     // Constructor para recibir apiToken y databaseId
     public NotionRepository(String apiToken, String databaseId) {
@@ -72,50 +71,37 @@ public class NotionRepository implements IRepository{
                 }
             }
         } catch (Exception e) {
-            throw new RepositoryException("Error al intentar verificar la existencia de la tarea: " + e.getMessage(), e);
+            throw new RepositoryException("No existe la tarea, se puede proceder a añadir una nueva: " + e.getMessage(), e);
         }
         return null;
     }
 
-    private Task mapPageToTask(String pageId, Map<String, PageProperty> properties) throws RepositoryException {
-        // Extraemos las propiedades de la página y las mapeamos a un objeto Task
-        int identifier = 0;
-        String title = null;
-        String content = null;
-        String dateString = null;
-        int priority = 0;
-        int estimatedDuration = 0;
-        boolean completed = false;
-    
+    // Obtenemos la informacion de la tarea a obtener
+    private Task mapPageToTask(String pageId, Map<String, PageProperty> properties) throws RepositoryException {    
         // Obtenemos los datos
         try {
             String identifierValue = properties.get("Identifier").getTitle().get(0).getText().getContent();
-            identifier = Integer.parseInt(identifierValue);
-            title = properties.get("TaskTitle").getRichText().get(0).getText().getContent();
-            content = properties.get("Content").getRichText().get(0).getText().getContent();
-            dateString = properties.get("Date").getDate().getStart();
-            priority = properties.get("Priority").getNumber().intValue();
-            estimatedDuration = properties.get("Estimated Duration").getNumber().intValue();
-            completed = properties.get("Completed").getCheckbox();
+            int identifier = Integer.parseInt(identifierValue);
+            String title = properties.get("TaskTitle").getRichText().get(0).getText().getContent();
+            String content = properties.get("Content").getRichText().get(0).getText().getContent();
+            String dateString = properties.get("Date").getDate().getStart();
+            int priority = properties.get("Priority").getNumber().intValue();
+            int estimatedDuration = properties.get("Estimated Duration").getNumber().intValue();
+            boolean completed = properties.get("Completed").getCheckbox();
+            // Crear y devolver el objeto Task
+            return new Task(identifier, title, dateString, content, priority, estimatedDuration, completed);
         } catch (Exception e) {
-            throw new RepositoryException("Error al mapear los datos de la tarea: " + e.getMessage(), e);
+            throw new RepositoryException("Error al obtener los datos de la tarea: " + e.getMessage(), e);
         }
-        // Crear y devolver el objeto Task
-        return new Task(identifier, title, dateString, content, priority, estimatedDuration, completed);
     }
     
     
-
     @Override
     public void addTask(Task task) throws RepositoryException {
 
         if (existsTask(task.getIdentifier()) != null) {
             throw new RepositoryException("Ya existe una tarea con el Identifier: " + task.getIdentifier());
-        }
-    
-        // Si no existe, creamos una nueva página en Notion
-        System.out.println("Creando una nueva página en Notion...");
-    
+        }    
         // Configurar las propiedades de la pagina si no existe
         Map<String, PageProperty> properties = Map.of(
                 "Identifier", createTitleProperty(String.valueOf(task.getIdentifier())),
@@ -133,8 +119,7 @@ public class NotionRepository implements IRepository{
     
         try {
             // Ejecutar la solicitud para crear la página
-            Page response = client.createPage(request);
-            System.out.println("Página creada con ID (interno Notion): " + response.getId());
+            client.createPage(request);
         } catch (Exception e) {
             throw new RepositoryException("Error al añadir la tarea en Notion: " + e.getMessage(), e);
         }
@@ -181,32 +166,138 @@ public class NotionRepository implements IRepository{
     
     @Override
     public void removeTask(int id) throws RepositoryException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeTask'");
-    }
+        try 
+        {
+            // Encontrar el ID real de la página en Notion
+            String pageId = findPageIdByIdentifier(id);
+            if (pageId == null) {
+                throw new RepositoryException("No se encontró ninguna tarea con el identificador: " + id);
+            }
 
+            // Creamos la solicitud para archivar la página
+            UpdatePageRequest updateRequest = new UpdatePageRequest(pageId, Collections.emptyMap(), true);
+    
+            // Ejecutamos la solicitud
+            client.updatePage(updateRequest);    
+        } catch (Exception e) {
+            throw new RepositoryException("Error al eliminar la tarea con ID: " + id);
+        }
+    }
+    
+    // Buscamos en Notion el pageID correspondiente a mi identificador
+    private String findPageIdByIdentifier(int identifier) throws RepositoryException {
+        try
+        {
+            QueryDatabaseRequest queryRequest = new QueryDatabaseRequest(databaseId);
+            QueryResults queryResults = client.queryDatabase(queryRequest);
+
+            for (Page page : queryResults.getResults()) {
+                Map<String, PageProperty> properties = page.getProperties();
+                String identifierValue = properties.get("Identifier").getTitle().get(0).getText().getContent();
+    
+                // Comparamos el identificador lógico
+                if (Integer.parseInt(identifierValue) == identifier) {
+                    return page.getId(); // Retornamos el ID
+                }
+            }
+        } catch (Exception e) {
+            throw new RepositoryException("Error al buscar la página por identificador: " + identifier, e);
+        }
+        return null;
+    }
+    
+    
     @Override
     public void modifyTask(int id, String title, String date, String content, int priority, int estimatedDuration, boolean completed) throws RepositoryException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'modifyTask'");
+        try {
+            // Encontrar el Id real de Notion usando el identificador
+            String pageId = findPageIdByIdentifier(id);
+            if (pageId == null) {
+                throw new RepositoryException("No se encontró ninguna tarea con el identificador: " + id);
+            }
+
+            // Mapa para las propiedades actualizadas, solo incluimos las propiedades que se nos pasan
+            Map<String, PageProperty> updatedProperties = new HashMap<>();
+
+            // Comprobar si se quiere actualizar todo o solo el estado
+            if (title != null) updatedProperties.put("TaskTitle", createRichTextProperty(title));
+            if (date != null) {
+                LocalDate localDate = LocalDate.parse(date);
+                updatedProperties.put("Date", createDateProperty(localDate));
+            }
+            if (content != null && !content.isEmpty()) updatedProperties.put("Content", createRichTextProperty(content));
+            if (priority != -1) updatedProperties.put("Priority", createNumberProperty(priority));
+            if (estimatedDuration != -1) updatedProperties.put("Estimated Duration", createNumberProperty(estimatedDuration));
+            updatedProperties.put("Completed", createCheckboxProperty(completed));
+
+            if (updatedProperties.isEmpty()) {
+                throw new RepositoryException("No se proporcionaron valores válidos para actualizar.");
+            }
+
+            // Crear la solicitud de actualización
+            UpdatePageRequest updateRequest = new UpdatePageRequest(pageId, updatedProperties);
+            client.updatePage(updateRequest);    
+        } catch (Exception e) {
+            throw new RepositoryException("Error al actualizar la tarea con ID: " + id, e);
+        }
     }
 
     @Override
     public ArrayList<Task> getAllTask() throws RepositoryException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllTask'");
-    }
-
-    @Override
-    public void saveData() throws RepositoryException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'saveData'");
-    }
+        ArrayList<Task> tasks = new ArrayList<>();
+        try {
+            QueryDatabaseRequest queryRequest = new QueryDatabaseRequest(databaseId);
+            QueryResults queryResults = client.queryDatabase(queryRequest);
+    
+            // Procesamos lso resultados
+            for (Page page : queryResults.getResults()) {
+                Map<String, PageProperty> properties = page.getProperties();
+                Task task = mapPageToTask(page.getId(), properties);
+                if (task != null) {
+                    tasks.add(task);
+                }
+            }
+        } catch (Exception e) {
+            throw new RepositoryException("Error al obtener todas las tareas: " + e.getMessage(), e);
+        }
+        return tasks;
+    }    
 
     @Override
     public ArrayList<Task> getUncompletedTasks() throws RepositoryException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getUncompletedTasks'");
+        ArrayList<Task> uncompletedTasks = new ArrayList<>();
+        try {
+            QueryDatabaseRequest queryRequest = new QueryDatabaseRequest(databaseId);
+            QueryResults queryResults = client.queryDatabase(queryRequest);
+    
+            // Procesamos los resultados
+            for (Page page : queryResults.getResults()) {
+                Map<String, PageProperty> properties = page.getProperties();
+                Task task = mapPageToTask(page.getId(), properties);
+    
+                // Agregamos la tarea solo si no está completada
+                if (task != null && !task.isCompleted()) {
+                    uncompletedTasks.add(task);
+                }
+            }
+
+            // Ordenamos la lista por prioridad
+            Collections.sort(uncompletedTasks, (task1, task2) -> Integer.compare(task2.getPriority(), task1.getPriority()));
+
+        } catch (Exception e) {
+            throw new RepositoryException("No hay tareas sin completar: " + e.getMessage(), e);
+        }
+        return uncompletedTasks;
+    }
+    
+    // Nos desconectamos del cliente
+    @Override
+    public void saveData() throws RepositoryException {
+        try {
+            client.close();
+        } catch (Exception e) {
+            throw new RepositoryException("Error al cerrar la conexión: " + e.getMessage(), e);
+        }
     }
     
 }
