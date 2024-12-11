@@ -50,7 +50,7 @@ public class Task implements Serializable{
         if (dateToParse == null) {
             System.err.println("Error parseando la fecha a String");
         }
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         return dateToParse.format(formatter);
     }
 

@@ -60,20 +60,21 @@ public class Model {
         return repository.getUncompletedTasks();
     }
 
-    // Exportar al fichero binario
+    // Finalizacion de la aplicacion
     public void saveData() throws RepositoryException {
         repository.saveData();
     }
 
     public void importFromCSV() throws ExporterException {
         try {
-            List<Task> tasksFromFile = exporter.importTasks(); // Obtener tareas desde el exporter
-    
+            List<Task> tasksFromFile = exporter.importTasks();
+            
+            // Iterar sobre las tareas importadas
             for (Task task : tasksFromFile) {
                 try {
-                    addTask(task); // Intentar añadir la tarea al repositorio
+                    addTask(task);
                 } catch (RepositoryException e) {
-                    throw new ExporterException("Error al añadir la tarea con ID " + task.getIdentifier() + ": " + e.getMessage(), e);
+                    // No hacemos nada si la tarea esta duplicada
                 }
             }
         } catch (ExporterException e) {
@@ -88,13 +89,14 @@ public class Model {
 
     public void importFromJSON() throws ExporterException {
         try {
-            List<Task> tasksFromFile = exporter.importTasks(); // Obtener tareas desde el exporter
-    
+            List<Task> tasksFromFile = exporter.importTasks();
+            
+            // Iterar sobre las tareas importadas
             for (Task task : tasksFromFile) {
                 try {
-                    addTask(task); // Intentar añadir la tarea al repositorio
+                    addTask(task);
                 } catch (RepositoryException e) {
-                    throw new ExporterException("Error al añadir la tarea con ID " + task.getIdentifier() + ": " + e.getMessage(), e);
+                    // No hacemos nada si la tarea esta duplicada
                 }
             }
         } catch (ExporterException e) {
