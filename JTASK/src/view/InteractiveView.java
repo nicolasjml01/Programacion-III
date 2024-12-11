@@ -135,7 +135,6 @@ public class InteractiveView extends BaseView{
             if (result)
             {
                 controller.removeTask(id);                
-                showMessage("Tarea eliminada correctamente.");
             }else System.out.println("Volviendo al menu CRUD....");
         } else {
             showErrorMessage("No existe la tarea con el identificador: " + id);
@@ -153,12 +152,8 @@ public class InteractiveView extends BaseView{
             showTask(task);   
             boolean completed = Esdia.yesOrNo("¿Está la tarea completada? (y/n): ");
             controller.modifyTask(id, null, null, null, -1, -1, completed);
-            
-            showMessage("Estado de la tarea modificado correctamente.");
-            } else {
-                showErrorMessage("No existe la tarea con el identificador: " + id);
-            }
-        }
+        } else showErrorMessage("No existe la tarea con el identificador: " + id);
+    }
              
     private void modifyTask() throws RepositoryException
     {
@@ -179,10 +174,8 @@ public class InteractiveView extends BaseView{
             boolean completed = Esdia.yesOrNo("¿Esta la tarea completada? (y/n): ");
             controller.modifyTask(id,title, date, content, priority, estimatedDuration, completed);
             
-            showMessage("Estado de la tarea modificado correctamente.");
-        } else {
-            showErrorMessage("No existe la tarea con el identificador: " + id);
-        }
+        } else showErrorMessage("No existe la tarea con el identificador: " + id);
+        
     }
 
     private void showTask(Task task) {

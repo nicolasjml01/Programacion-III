@@ -20,7 +20,7 @@ public class CSVExporter implements IExporter{
         List<Task> taskList = new ArrayList<>(); // Lista temporal de tareas válidas
 
         if (!file.exists() || !file.isFile()) {
-            throw new ExporterException("El archivo no existe o no es un archivo válido.");
+            throw new ExporterException("El archivo CSV no existe o no es un archivo válido.");
         }
 
         try {

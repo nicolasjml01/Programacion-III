@@ -18,7 +18,7 @@ public class BinaryRepository implements IRepository{
     // Lista de tareas con las que trabajaremos
     ArrayList<Task> tasks;
 
-    @SuppressWarnings("unchecked") // PARA QUITAR EL WARNING (BORRAR)
+    @SuppressWarnings("unchecked") // Para quitar el warning
     @Override
     public void loadData() throws RepositoryException {
         File file = Rutas.fileToFileOnDesktop("tasks.bin");

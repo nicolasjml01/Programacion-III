@@ -100,7 +100,7 @@ public class Model {
                 }
             }
         } catch (ExporterException e) {
-            throw new ExporterException("Error al importar tareas desde CSV: " + e.getMessage(), e);
+            throw new ExporterException("Error al importar tareas desde JSON: " + e.getMessage(), e);
         }
     }
 

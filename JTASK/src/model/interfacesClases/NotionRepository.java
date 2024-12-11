@@ -34,13 +34,6 @@ public class NotionRepository implements IRepository{
 
         // Configurar loggers
         client.setLogger(new Slf4jLogger());
-        
-        // Silenciar/Activar los registros de log de Notion API
-        // Ver en nivel debug los mensajes de depuración
-        System.setProperty("notion.api.v1.logging.StdoutLogger", "debug");
-
-        // Nivel más alto de log para NO ver mensajes de depuración
-        //System.setProperty("notion.api.v1.logging.StdoutLogger", "off");
 
         this.databaseId = databaseId;
     }

@@ -31,7 +31,7 @@ public class Controller {
             model.loadData();
             view.showMessage("Exito accediendo/cargando la base de datos.");
         } catch (RepositoryException ex) {
-            view.showErrorMessage("Error al cargar los datos: " + ex.getMessage());
+            throw new RepositoryException("Error al cargar los datos: " + ex.getMessage());
         }
     }
 
@@ -126,7 +126,7 @@ public class Controller {
             model.importFromJSON();
             view.showMessage("Fichero JSON importado correctamente.");
         } catch (ExporterException e) {
-            view.showErrorMessage("Error al exportar el fichero JSON: " + e.getMessage());
+            view.showErrorMessage("Error al importar el fichero JSON: " + e.getMessage());
         }
     }
 
