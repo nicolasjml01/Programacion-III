@@ -19,8 +19,8 @@ public class Main {
     public static void main(String[] argas) {
 
         // CAMBIE ESTOS VALORES POR SUS PROPIAS CREDENCIALES DE LA API DE NOTION
-        String apiToken = "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";
-        String databaseId = "158dff6c0e62800ea344d1a3b036bcd2";
+        String apiToken = "codigo_Notion";
+        String databaseId = "id_dataBase";
 
         // Crear repositorio con cliente HTTP personalizado
         NotionRepository repository = new NotionRepository(apiToken, databaseId);
